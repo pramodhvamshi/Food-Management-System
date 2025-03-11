@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/footer.css";
+import "../styles/footer.css"; // CSS for Footer
 
 const Footer = () => {
   return (
-    <footer className="footer bg-dark text-light py-4">
-      <div className="container text-center">
-        <p>© {new Date().getFullYear()} Food Donation. All Rights Reserved.</p>
-        
-        <div className="footer-links">
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/privacy-policy">Privacy Policy</Link>
-        </div>
-
-        <div className="social-icons">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">🌐 Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
-        </div>
+    <footer className="bg-dark text-light py-3 mt-5">
+      <div className="container d-flex justify-content-between align-items-center">
+        <span>© {new Date().getFullYear()} Food Donation, Inc.</span>
+        <ul className="nav">
+          <li className="nav-item">
+            <a className="nav-link text-light" href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-twitter"></i>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-light" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-instagram"></i>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link text-light" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-facebook"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

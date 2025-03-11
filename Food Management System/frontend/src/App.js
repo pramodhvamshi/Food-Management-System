@@ -5,30 +5,34 @@ import Donate from "./pages/Donate";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile"; 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AuthProvider from "./context/AuthContext";
-import Profile from "./pages/Profile";
 import History from "./pages/History";
 import SignUpDonor from "./pages/SignupDonor";
 import SignUpOrganization from "./pages/SignupOrganization";
 
 const App = () => {
   return (
-    <AuthProvider>
+    <AuthProvider>  {/* ✅ No <Router> here! */}
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/signup-donor" element={<SignUpDonor />} />
-        <Route path="/signup-organization" element={<SignUpOrganization />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/history" element={<History />} />
-      </Routes>
-      <Footer />
+      <div className="d-flex flex-column min-vh-100">
+        <div className="container flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/signup-donor" element={<SignUpDonor />} />
+            <Route path="/signup-organization" element={<SignUpOrganization />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/history" element={<History />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
     </AuthProvider>
   );
 };

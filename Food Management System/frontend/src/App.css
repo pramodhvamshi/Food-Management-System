@@ -37,3 +37,16 @@
   }
 }
 
+html, body, #root {
+  height: 100%;
+}
+
+.container {
+  flex: 1;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

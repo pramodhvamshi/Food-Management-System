@@ -23,10 +23,10 @@ const Login = () => {
 
       if (res.data && res.data.token) {
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userRole", res.data.role);
+        localStorage.setItem("userRole", res.data.user.role);
         alert("Login Successful!");
 
-        if (res.data.role === "ngo") {
+        if (res.data.user.role === "ngo") {
           navigate("/ngo-dashboard");
         } else {
           navigate("/dashboard");
