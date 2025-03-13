@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         setUser(res.data.user);
       } catch (err) {
         console.error("Error fetching user:", err.response?.data?.message || err.message);
-        localStorage.removeItem("token"); 
+        localStorage.removeItem("token");
       }
     };
 

@@ -4,14 +4,18 @@ const roleMiddleware = (requiredRoles) => {
       return res.status(401).json({ error: "Unauthorized: No user found" });
     }
 
-    // Allow donors to fetch their own donations (GET request only)
-    if (req.method === "GET" && req.path.startsWith("/api/donations") && req.user.role === "donor") {
+    const userRole = req.user.role;
+    const isGetRequest = req.method === "GET";
+    const requestPath = req.path.toLowerCase();
+
+    // ✅ Allow donors to fetch only their donations
+    if (isGetRequest && requestPath.includes("/my-donations") && userRole === "donor") {
       return next();
     }
 
-    // Restrict access based on requiredRoles for POST & PUT requests
-    if (!requiredRoles.includes(req.user.role)) {
-      return res.status(403).json({ error: "Access denied" });
+    // 🚫 Restrict access for other routes/methods
+    if (!requiredRoles.includes(userRole)) {
+      return res.status(403).json({ error: `Access denied for role: ${userRole}` });
     }
 
     next();

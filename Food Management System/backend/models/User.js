@@ -4,35 +4,33 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    trim: true,  // Ensures no leading/trailing spaces
+    trim: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true,  // Converts email to lowercase
-    match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,  // Email format validation
+    lowercase: true,
+    match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   password: {
     type: String,
     required: true,
-    minlength: 6,  // Ensures password is at least 6 characters long
+    minlength: 6,
   },
   role: {
     type: String,
     enum: ['donor', 'ngo', 'admin'],
-    default: 'donor',  // Default role set to 'donor'
+    default: 'donor',
   },
   address: {
     type: String,
-    required: false,
-    default: '',  // Address is optional
+    default: '',
   },
   phone: {
     type: String,
-    required: false,
-    match: /^\d{10}$/,  // Phone must be exactly 10 digits
-    default: '',  // Phone is optional
+    match: /^\d{10}$/,
+    default: '',
   },
 }, { timestamps: true });
 

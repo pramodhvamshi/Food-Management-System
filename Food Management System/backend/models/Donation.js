@@ -3,13 +3,15 @@ import mongoose from 'mongoose';
 const donationSchema = new mongoose.Schema({
   donor: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'User', // Assuming you have a User model
     required: true
   },
-  foodItems: [{
-    name: String,
-    quantity: String
-  }],
+  foodItems: [
+    {
+      name: { type: String, required: true },
+      quantity: { type: String, required: true }
+    }
+  ],
   address: {
     type: String,
     required: true
@@ -20,12 +22,10 @@ const donationSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: 'pending',
-    enum: ['pending', 'accepted', 'delivered']
+    enum: ['pending', 'accepted', 'delivered'],
+    default: 'pending'
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 const Donation = mongoose.model('Donation', donationSchema);
 export default Donation;
