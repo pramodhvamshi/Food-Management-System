@@ -14,7 +14,15 @@ The system enables:
 - Real-time tracking of donation lifecycle  
 
 ---
+## 🌐 Live Deployment
 
+Frontend:  
+https://food-management-system-psi.vercel.app
+
+Backend API:  
+https://food-management-system-d9mt.onrender.com
+
+----
 # 🎯 Project Vision
 
 Millions of tons of food are wasted every day while millions of people struggle with hunger.
