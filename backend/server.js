@@ -32,7 +32,11 @@ const createDefaultAdmin = async () => {
           password: 'admin123',
           role: 'admin',
           phone: '1234567890',
-          address: 'System'
+          address: 'System',
+          location: {
+            type: 'Point',
+            coordinates: [0, 0]
+          }
         });
         console.log('Default Admin account created successfully');
       }

@@ -60,6 +60,17 @@ const updateUserProfile = async (req, res) => {
           if (orgProfileBody.location) orgProfile.location = orgProfileBody.location;
           const updatedOrgProfile = await orgProfile.save();
           responseData.orgProfile = updatedOrgProfile;
+        } else {
+          // Robust fallback: if organization profile got deleted or missed during registration
+          const newOrgProfile = await OrganizationProfile.create({
+            orgName: orgProfileBody.orgName || user.name,
+            description: orgProfileBody.description || 'No description provided',
+            location: orgProfileBody.location || user.location,
+            contactEmail: user.email,
+            phone: user.phone,
+            createdBy: user._id
+          });
+          responseData.orgProfile = newOrgProfile;
         }
       }
 

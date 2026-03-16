@@ -18,6 +18,7 @@ import AcceptedDonations from './pages/AcceptedDonations';
 // Let's use NearbyPickups as the agent index / dashboard.
 import NearbyPickups from './pages/NearbyPickups';
 import AdminDashboard from './pages/AdminDashboard';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
 
           <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
             <Route path="admin/dashboard" element={<AdminDashboard />} />
+          </Route>
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="profile" element={<Profile />} />
           </Route>
           
           <Route path="*" element={<Navigate to="/" replace />} />
